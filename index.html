@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprite Animation Test</title>
+    <!-- -linking the main css file -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- -showing the main horse and all sprites inside this box -->
+    <div class="main-container">
+        <div class="main-image"></div>
+        <div class="sprite"></div>
+        <div class="sprite2"></div>
+        <div class="sprite3"></div>
+        <div class="sprite4"></div>
+        <!-- -adding arrows to show where to click -->
+        <div class="arrow arrow-tail"></div>
+        <div class="arrow arrow-legs"></div>
+        <div class="arrow arrow-ears"></div>
+    </div>
+    <!-- -showing the instructions box below the horse -->
+    <div class="box-container">
+        <img class="box-image" src="assets/images/border.png" alt="Box">
+        <div class="instructions-text">
+            <!-- -writing the instructions for user -->
+            <h2>INSTRUCTIONS</h2>
+            <ul>
+                <li>➛ Click each part of the horse to play its sound.</li>
+                <li>➛ Hover to preview.</li>
+                <li>➛ Activate all three and watch the sky respond.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- -adding audio files for each sprite sound -->
+    <audio id="tail-sound" src="assets/sounds/tail.mp3"></audio>
+    <audio id="legs-sound" src="assets/sounds/legs.mp3"></audio>
+    <audio id="ears-sound" src="assets/sounds/ears.mp3"></audio>
+    <!-- -linking the main javascript file for sounds and logic -->
+    <script src="js/sounds.js"></script>
+</body>
+</html>

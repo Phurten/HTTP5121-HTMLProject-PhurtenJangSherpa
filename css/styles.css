@@ -1,0 +1,324 @@
+/* -importing google fonts for all text and heading */
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+/* -hiding scrollbars for whole page */
+html, body {
+    overflow: hidden;
+}
+
+/* -setting up main font and centering everything */
+body {
+    font-family: 'Inknut Antiqua', serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f0f0f0;
+    position: relative;
+}
+
+/* -making background image fade in when class is added */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('../assets/images/sky-bg.png') center/cover no-repeat;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 6s linear;
+}
+body.bg-fade-in::after {
+    opacity: 1;
+}
+
+/* -main container for horse and sprites, scaling for smaller screens */
+.main-container {
+    position: relative;
+    width: 874px;
+    height: 1099px;
+    margin-top: -250px; /* moving up */
+    margin-left: 80px;
+    z-index: 0;
+    transform: scale(0.7);
+    transform-origin: center;
+}
+
+/* -main horse image, not clickable */
+.main-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 874px;
+    height: 1099px;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url('../assets/images/main.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* -sprite example, each part of horse is a sprite */
+.sprite {
+    width: 200px;
+    height: 300px;
+    background-image: url('../assets/images/Tail.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 600px;
+    left: 570px;
+    z-index: -2; /* -putting behind main image */
+}
+
+/* -sprite hover animation */
+.sprite:hover,
+.sprite:active {
+    animation: play 1s steps(11) 1;
+}
+
+/* -sprite animation keyframes */
+@keyframes play {
+    from { background-position: 0 0; }
+    to { background-position: -2200px 0; }
+}
+
+/* -second sprite (legs) */
+.sprite2 {
+    width: 175px;
+    height: 302px;
+    background-image: url('../assets/images/legs.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 590px;
+    left: 144px;
+    z-index: 1;
+}
+
+/* -second sprite hover animation */
+.sprite2:hover,
+.sprite2:active {
+    animation: play2 0.5s steps(2) 4;
+}
+
+@keyframes play2 {
+    from { background-position: 0 0; }
+    to { background-position: -350px 0; }
+}
+
+/* -third sprite (eyes) */
+.sprite3 {
+    width: 35px;
+    height: 35px;
+    background-image: url('../assets/images/eyes.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 268px;
+    left: 175px;
+    z-index: 1;
+}
+
+/* -third sprite hover animation */
+.sprite3:hover,
+.sprite3:active {
+    animation: play3 0.6s steps(5) 1;
+}
+
+@keyframes play3 {
+    from { background-position: 0 0; }
+    to { background-position: -175px 0; }
+}
+
+/* -fourth sprite (ears) */
+.sprite4 {
+    width: 118px;
+    height: 73px;
+    background-image: url('../assets/images/ears.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 179px;
+    left: 105px;
+    z-index: 1;
+}
+
+/* -fourth sprite hover animation */
+.sprite4:hover,
+.sprite4:active {
+    animation: play4 0.7s steps(5) 1;
+}
+
+@keyframes play4 {
+    from { background-position: 0 0; }
+    to { background-position: -590px 0; }
+}
+
+/* -infinite animation classes for each sprite */
+.sprite-animate { animation: play 1.2s steps(11) infinite; }
+.sprite2-animate { animation: play2 0.3s steps(2) infinite; }
+.sprite3-animate { animation: play3 0.4s steps(5) infinite; }
+.sprite4-animate { animation: play4 0.6s steps(5) infinite; }
+
+/* -box for instructions and moon text */
+.box-container {
+    position: relative;
+    width: 935px;
+    margin: -175px auto 0 auto;
+}
+.box-image {
+    display: block;
+    margin: 0 auto 0 auto;
+    width: 935px;
+    height: auto;
+}
+
+/* -instructions text styling */
+.instructions-text {
+    position: absolute;
+    top: 40px;
+    left: -20px;
+    width: 100%;
+    text-align: center;
+    color: #222;
+    padding: 0 30px;
+    pointer-events: none;
+}
+
+/* -instructions heading */
+.instructions-text h2 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* -making instruction list left aligned but centered as a block */
+.instructions-text ul {
+    list-style: none;
+    padding: 0;
+    margin: -10px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* -smaller gap for instruction list */
+.instructions-text li {
+    font-size: 1rem;
+}
+
+/* -arrows pointing to sprites, bouncing animation */
+.arrow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10;
+    animation: bounce 1s infinite;
+}
+.arrow-tail {
+    background: url('../assets/images/arrow-tail.svg') no-repeat center/contain;
+    top: 650px; left: 710px;
+}
+.arrow-legs {
+    background: url('../assets/images/arrow-legs.svg') no-repeat center/contain;
+    top: 600px; left: 80px;
+}
+.arrow-eyes {
+    background: url('../assets/images/arrow-eyes.svg') no-repeat center/contain;
+    top: 270px; left: 220px;
+}
+.arrow-ears {
+    background: url('../assets/images/arrow-ears.svg') no-repeat center/contain;
+    top: 150px; left: 200px;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-15px);}
+}
+
+/* -blood red moon heading, big font and animated shadow */
+.blood-red-moon-heading {
+    font-family: 'Metal Mania', cursive;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 40px;
+    letter-spacing: 2px;
+    animation: moon-shadow-slide 4s linear infinite;
+}
+.blood-red-moon-heading .blood { color: #111; }
+.blood-red-moon-heading .red { color: #B00000; }
+.blood-red-moon-heading .moon { color: #fff; }
+.blood-red-moon-heading span {
+    text-shadow:
+        -60px 0 60px #fff,
+        -30px 0 40px #fff,
+        0 0 20px #fff,
+        30px 0 40px #fff,
+        60px 0 60px #fff;
+    transition: text-shadow 0.5s;
+    animation: moon-shadow-slide 5s linear infinite;
+}
+@keyframes moon-shadow-slide {
+    0% {
+        text-shadow:
+            -60px 0 60px #fff,
+            -30px 0 40px #fff,
+            0 0 20px #fff,
+            30px 0 40px #fff,
+            60px 0 60px #fff;
+    }
+    100% {
+        text-shadow:
+            200px 0 100px #fff,
+            200px 0 100px #fff,
+            0 0 20px #fff,
+            -200px 0 100px #fff,
+            -200px 0 100px #fff;
+    }
+}
+
+/* -making heading and layout responsive for smaller screens */
+@media (max-width: 1024px) {
+    .blood-red-moon-heading { font-size: 2.5rem; }
+}
+@media (max-width: 600px) {
+    .blood-red-moon-heading { font-size: 1.5rem; }
+}
+
+/* -responsive scaling for main container and box for laptops and tablets */
+@media (max-width: 1440px) {
+    .main-container { transform: scale(0.55); margin-top: -300px; }
+    .box-container, .box-image { width: 750px; }
+    .box-container{ margin-top: -260px; }
+    .instructions-text { top: 25px; }
+    .instructions-text h2 { font-size: 1.1rem; }
+    .instructions-text li { font-size: 0.7rem; }
+    .blood-red-moon-heading { font-size: 3rem; }
+}
+@media (max-width: 1024px) {
+    .main-container { transform: scale(0.45); margin-top: -400px; }
+    .box-container, .box-image { width: 95vw; min-width: 0; }
+    .instructions-text { top: 10px; padding: 0 2vw; }
+    .instructions-text h2 { font-size: 1.1rem; }
+    .instructions-text li { font-size: 0.85rem; }
+}
+@media (max-width: 1200px) {
+    .main-container { transform: scale(0.55); margin-top: -300px; }
+    .box-container{ margin-top: -250px; }
+    .box-container, .box-image { width: 700px; max-width: 95vw; }
+    .instructions-text { top: 25px; padding: 0 10px; }
+    .instructions-text h2 { font-size: 1.3rem; }
+    .instructions-text li { font-size: 0.8rem; }
+}
+@media (max-width: 800px) {
+    .main-container { transform: scale(0.38); margin-top: 0; }
+    .box-container, .box-image { width: 95vw; min-width: 0; }
+    .instructions-text { top: 10px; padding: 0 2vw; }
+    .instructions-text h2 { font-size: 1.1rem; }
+    .instructions-text li { font-size: 0.85rem; }
+}
